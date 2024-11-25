@@ -15,19 +15,33 @@
             line-height: 1.8;
         }
         header {
-            background: url('https://via.placeholder.com/1920x600') no-repeat center center/cover;
-            height: 70vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-        }
-        header h1 {
-            font-size: 3.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-            margin: 0;
-        }
+    position: relative; /* Ensures h1 can be positioned relative to the header */
+    height: 100vh; /* Full viewport height */
+    width: 100%; /* Full width of the viewport */
+    overflow: hidden; /* Prevents content overflow */
+    display: flex; /* Enables flexbox for centering */
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+}
+
+header img {
+    position: absolute; /* Allows layering of the h1 over the image */
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    object-fit: cover; /* Ensures the image covers the area proportionally */
+    z-index: -1; /* Sends the image to the background */
+}
+
+header h1 {
+    font-size: 3.5rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    margin: 0; /* Removes default margin */
+    z-index: 1; /* Ensures h1 stays above the image */
+}
         .content {
             max-width: 1100px;
             margin: auto;
@@ -57,6 +71,39 @@
             padding: 10px;
             margin-top: 30px;
         }
+        .modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); /* Black background with opacity */
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    border-radius: 8px;
+}
+
+.modal-content:hover {
+    transform: scale(1.02); /* Slight zoom effect in modal */
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
         /* Responsive Styles */
         @media (max-width: 768px) {
             header h1 {
@@ -82,13 +129,19 @@
 </head>
 <body>
     <header>
+        <img src="mardi-himal-trek-banner.webp">
         <h1>Mardi Himal Trek: A Hidden Gem</h1>
     </header>
     
     <div class="content">
         
         <div class="section">
-            <img src="Map-Mardi-Himal-Trekking.png" alt="Low Camp View">
+            
+            <img src="Map-Mardi-Himal-Trekking.png" alt="Low Camp View" onclick="openModal(this)">
+            <div id="imageModal" class="modal" onclick="closeModal()">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="modalImage">
+            </div>
 
             <h2>Setting Out</h2>
             <p>
@@ -100,7 +153,7 @@
                     
                     Pasang arrived in Pokhara on the 6th of November, bringing with him a palpable sense of anticipation. The evening was spent in a flurry of preparation. After a warm greeting, we turned our attention to one of the most crucial elements of the trip—our mode of transport.
                     Our trusted Royal Enfield motorcycle, a symbol of resilience and reliability, underwent a thorough inspection. Every bolt was tightened, the oil checked, and the engine fine-tuned, ensuring it was ready to tackle the winding roads leading to Deurali, our first stop.</p>
-<img src="https://via.placeholder.com/800x400" alt="Low Camp View">
+<img src="bull.jpg" alt="Low Camp View"  onclick="openModal(this)">
         </div>
         <div class="section">
             <h2>Gearing Up for the Journey</h2>
@@ -132,7 +185,7 @@
                 Through the gloom, we spotted an elderly woman—the sole sign of life in the early hours. Her warm smile and guidance were a godsend, pointing us to the correct route. Suddenly, the rough off-road trails and our earlier misstep didn’t seem so bad. With renewed energy, we pushed forward.
                             </p>
            
-         <img src="https://via.placeholder.com/800x400" alt="High Camp Scenery">
+         <img src="lost.jpg" alt="High Camp Scenery">
           
          <h2>Breakfast with a View
         </h2>
@@ -154,14 +207,14 @@
                 We kicked off our trek around 6:30 am, energized and ready for the day ahead. As we began our hike toward Forest Camp, we noticed more homestays and hotels along the route. These accommodations were far more appealing than the ones at the starting point—perfect for family getaways or a cozy friends’ retreat. It was tempting to linger, but we had a long day ahead. Leaving the comfort of these spots behind, we pressed forward.
                 About 30 minutes into our journey, we stumbled upon a newly constructed temple nestled within the forest. Built just 6-7 months ago, its pristine condition stood out amidst the rugged surroundings. Unfortunately, we were so mesmerized by the breathtaking views of Deurali’s unique topography that we didn’t spend much time exploring the temple. The panoramic scene before us, a mix of dense forest and towering peaks, was simply astonishing.
                             </p>
-            <img src="https://via.placeholder.com/800x400" alt="High Camp Scenery"> 
+            <img src="./start.jpg" alt="High Camp Scenery"> 
             <h2>Two Paths, One Choice
             </h2>
             <p>
                 Within 20-30 minutes of trekking, we had already gained an elevation of about 200-300 meters. After a quick water break and a brief moment to catch our breath, we pushed onward. Soon, we reached a junction offering two paths—one described as easy but long, and the other steep and shorter. The time difference between the two was about 30-45 minutes. Eager to explore both the trails, we for the day opted for the longer, wider trail.
                 From the very start, the trail tested our endurance with its unrelenting incline. Fueled by a surge of morning energy, we tackled the steep section swiftly, reaching a gentler slope deep within the forest. The route was a mix of highs and lows, much like a roller coaster, which made the experience both challenging and exciting. The dense forest around us was stunning, and surprisingly, we didn’t encounter any wildlife—something I considered a stroke of good fortune.
                             </p>
-            <img src="https://via.placeholder.com/800x400" alt="High Camp Scenery"> 
+            <img src="two.jpg" alt="High Camp Scenery"> 
             <p>
                 As we continued, I began to feel a sharp pain at the back of my foot. At first, I hoped it would ease as I adjusted to the terrain and my shoes, but the discomfort only worsened. When we finally stopped for a break, I checked my foot and realized the skin was nearly cut—likely because of the thin socks I was wearing. Thankfully, I had packed an extra pair of socks. Layering them over the first pair, I found instant relief, which carried me through the rest of the trek.
                 With my foot issue resolved and our spirits still high, we resumed our journey, ready to take on the challenges of the trail.
@@ -172,7 +225,7 @@
                 After about 90 minutes, we reached a clearing in the dense jungle, where sunlight poured in like a golden spotlight. From this vantage point, we could see the village of Ghandruk far below—a breathtaking sight. Known as one of the most picturesque villages in Nepal, Ghandruk is a gateway to the Annapurna region and is famous for its close-up views of Annapurna South, Hiunchuli, and Machapuchare. The charming stone-paved trails and traditional Gurung houses make it a favorite destination for trekkers.
                 Having visited Ghandruk the previous year, I remembered its stunning proximity to Annapurna I, where the mountains felt almost within arm’s reach. But seeing it now from such a height, nestled like a tiny jewel amidst the vast landscape, was humbling. This perspective not only highlighted the sheer beauty of Ghandruk but also made me realize just how much elevation we had gained on this trek.
                             </p>
-            <img src="https://via.placeholder.com/800x400" alt="High Camp Scenery"> 
+            <img src="./forest.jpg" alt="High Camp Scenery"> 
             <h2>The Jungle's Secret Village
             </h2>
             <p>
@@ -185,7 +238,7 @@
             <p>
                 After about 3 hours and 15 minutes from the fork in the road, we finally reached Forest Camp. This open clearing amidst the jungle was a stark contrast to the dense canopy we had traversed. The area housed around 8–10 small hotels and restaurants, providing trekkers with much-needed rest and nourishment. The sight of these establishments, nestled in this remote setting, was a testament to the resilience and hospitality of the mountain communities.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="High Camp Scenery"> 
+            <img src="./forest camo.webp" alt="High Camp Scenery"> 
             <p>
                 Forest Camp marked a significant milestone in our trek. It wasn’t just a destination but a moment to reflect on the journey so far—the dense forest, the small challenges we overcame, and the awe-inspiring views that made every step worthwhile. With fresh energy and a sense of accomplishment, we prepared for the next leg of our adventure, eager to see what surprises the trail to High Camp had in store.
             </p>
@@ -206,7 +259,7 @@
                 By 2 PM, we reached Badal Danda, completing the steep climbs and dense forest trails of Low Camp. Known for its breathtaking views of the surrounding mountain ranges, Badal Danda is a welcome break from the jungle as it sits at a higher elevation, outside the forested areas. Unfortunately, due to unfavorable weather, the views were obscured, but our spirits remained high.
                 At Badal Danda, we encountered a mix of domestic and international trekkers, as well as porters and guides who joined us from Low Camp. Seeing groups returning from High Camp gave us motivation and encouragement to continue our trek. Interestingly, while we expected fellow Nepali trekkers to be more communicative and share their experiences, we found them surprisingly reserved. On the other hand, international tourists were incredibly friendly, often greeting us with a smile and a cheerful “Namaste.”
                             </p>
-            <img src="https://via.placeholder.com/800x400" alt="High Camp Scenery"> 
+            <img src="jun.jpg"High Camp Scenery"> 
             <h2>A Scenic Yet Strenuous Journey</h2>
             <p>
                 By the time we reached Badal Danda, we were down to the last sips of water in our bottles. Despite knowing that water would cost more at higher altitudes, we were shocked to learn that a liter of water refill cost Rs. 350. While we understood the challenges of transporting supplies to such remote areas, the price seemed steep. Determined to save our money, we decided to ration our remaining water until we reached High Camp, where drinking water would be included in our hotel package. This moment underscored the value of even a single sip of water during a trek.
@@ -218,7 +271,7 @@
                 Although tempted by her suggestion, I couldn't help but glance at Pasang, who looked like he was barely holding it together. The idea of trekking all the way to Base Camp, an additional 4500m, seemed more like signing up for a survival mission than an adventure at that point. I sarcastically quipped, "Sure, Pasang, let's just sprint to Base Camp while we're at it—sounds like a breeze, doesn’t it?"
                 Pasang, to my surprise, nodded with a half-smile, clearly too exhausted to grasp my sarcasm fully. We politely thanked the trekker and decided to keep our ambitions modest for the day. High Camp was already testing our endurance, so we focused on reaching it at a steady pace, taking frequent breaks whenever Pasang needed to catch his breath.
                             </p>
-            <img src="https://via.placeholder.com/800x400" alt="High Camp Scenery"> 
+            <img src="bada.jpg" alt="High Camp Scenery"> 
             <h2>A Test of Perseverance With Unpredictable Weather and Warm Camaraderie
             </h2>
             <p>
@@ -235,7 +288,7 @@
                 The mountains seemed so close, almost within reach, making me wonder how overwhelming the view would be from the viewpoint or even the base camp itself. Without wasting time, I quickly captured a few photos of the ranges and the High Camp surroundings. By the time I reached the dining hall—just a few steps away—the fog had rolled back in, erasing the mountains from sight. It was a humbling reminder of the altitude’s erratic nature and the importance of timing our trek wisely to catch the best views.
                 Inside the dining hall, a warm, crackling chimney greeted me. The sight of water boiling on it was oddly comforting. Resting my tired body near the heat, I sipped on several cups of hot water, savoring the warmth after a grueling day.
                             </p>
-            <img src="https://via.placeholder.com/800x400" alt="High Camp Scenery"> 
+            <img src="./dining hall.jpeg" alt="High Camp Scenery"> 
                       
             <h2>The Hotel Buzz
             </h2>
@@ -248,7 +301,7 @@
                 Dinner was announced, and I had to wake Passang, who sprang up at my first call—probably driven by the growls of his stomach. (Let’s just say hunger is a great motivator, even more than my commanding tone!)
                 The meal was simple yet hearty: dal, bhat, cauliflower, bodi (beans), saag (spanish), and a refreshing side of salad. It was our first proper meal of the day, and everyone, including us, eagerly went for second helpings. Sarcastically, we even finished portions meant for latecomers, leaving them waiting for the next batch of rice to cook. (Lesson learned: punctuality is key, even at dinner!xd!!)
                             </p>
-            <img src="https://via.placeholder.com/800x400" alt="High Camp Scenery"> 
+            <img src="ccc.jpg" alt="High Camp Scenery"> 
             <h2>Winding Down
             </h2>
             <p>
@@ -274,7 +327,7 @@
                 The climb was relentless—straight, steep, and seemingly endless. Yet, we pushed forward, exchanging words of motivation:
                 “It’s tough now, but imagine the view at the top!”
                 With each step, our excitement battled against fatigue.            </p>
-            <img src="https://via.placeholder.com/800x400" alt="High Camp Scenery"> 
+            <img src="half.webp" alt="High Camp Scenery"> 
             <h2>Altitude Strikes Back
             </h2>
             <p>
@@ -285,11 +338,11 @@
                 At exactly 5:55 a.m., I reached the viewpoint leaving Pasang down for the rest. The timing couldn’t have been better—the sunrise began unveiling the majestic peaks in all their glory. Mt. Fishtail stood tall, a sharp and distinct silhouette against the morning sky. But it was the Annapurna massif, towering at 8,091 meters, that left me awestruck. Its massive wall of snow and ice looked even more imposing up close than it did from Ghandruk which I had gone to last year.
                 Caught up in the beauty of the moment, I completely forgot about Pasang. By 6:30 a.m., he was still nowhere to be seen. Anxiety began creeping in as I searched for him across the viewpoint. Without my phone, which was in the bag he carried, I felt helpless. Just as I considered running back down the trail, I spotted him sitting in a quiet corner.
                                             </p>
-            <img src="https://via.placeholder.com/800x400" alt="High Camp Scenery"> <h2>The Final Countdown</h2>
+            <img src="sunrise.jpg" alt="High Camp Scenery"> <h2>The Final Countdown</h2>
             <p>
                 “Where were you this whole time?!” I shouted, relief and annoyance mixed in my voice. Pasang explained he had needed a longer rest but didn’t want to hold me back. Reunited, we laughed off the scare and took in the scenery together, reflecting on why we embarked on this trek in the first place. “Moments like this make every step worth it,” I told him as we captured countless photos and videos.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="High Camp Scenery"> 
+            <img src="mor.webp" alt="High Camp Scenery"> 
             <h2>Journey to Mardi Base Camp: A Snow-Covered Adventure
             </h2>
             <p>
@@ -306,14 +359,14 @@
                 Following the now-familiar routine, we captured countless pictures and videos to commemorate the achievement. Then came the highlight of the moment—a cup of coffee brewed at 4,500 meters. Sipping that hot coffee amidst the snowy peaks felt like a celebration of our journey, a fitting reward for the trials we had overcome. The taste, while simple, felt divine, perhaps because of the altitude, the effort, or the sheer magic of the setting.
                 We spent about 40 minutes at the base camp, reminiscing about each grueling step that brought us there. In that moment, we realized that while the journey had been demanding and uncertain, the destination was undeniably worth every ounce of effort.
                                             </p>
-            <img src="https://via.placeholder.com/800x400" alt="High Camp Scenery"> 
+            <img src="rrr.jpg" alt="High Camp Scenery"> 
             <h2>Descending the Ladder of Mardi
             </h2>
             <p>
                 With the morning sun growing warmer, we started our descent back toward the viewpoint. The return journey followed the same route, but the melting snow and mud made the trails significantly slipperier. Every step required cautious calculation to avoid slipping, but with a slow and steady pace, we managed to navigate the tricky terrain without incident.
                 As we retraced our steps, we felt a profound sense of gratitude—not just for the majestic views and safe journey, but for the lessons learned along the way. By the time we reached the viewpoint, the trail had become noticeably busier, with trekkers making their way up. Looking back at the path we had conquered, we couldn’t help but smile, proud of what we had accomplished.
                                             </p>
-            <img src="https://via.placeholder.com/800x400" alt="High Camp Scenery"> <h2>The Final Countdown</h2>
+            <img src="ladder.jpg" alt="High Camp Scenery"> <h2>The Final Countdown</h2>
             <p>
                 As we climbed down the steep ladders that had challenged us earlier, the descent felt surprisingly swift and effortless. The steepness that had tested our endurance on the way up now worked in our favor, allowing us to maintain a brisk pace. The journey down seemed to flow seamlessly—until we encountered a Swiss couple who added a fascinating twist to our trek.
                 The couple, who were on a two-month vacation in Nepal, shared that they were working as finance managers back in Switzerland. What struck me deeply was their decision to leave behind their professional lives for six months to explore the world. For someone from Nepal, where societal and individual pressures often make such choices seem unattainable, their approach was both inspiring and thought-provoking.
@@ -333,7 +386,7 @@
                 As we exchanged brief farewells and headed to our respective accommodations, a sense of satisfaction settled over me. I was deeply relieved that I hadn’t suggested the alternate trail to them. While Pasang and I had made it through without incident, it was a risky gamble I wouldn’t have wanted anyone else to take.
                 In the end, it wasn’t about how fast we reached our destination. The real victory was in the experience—one that reminded us to respect the mountains, cherish our safety, and laugh at the daring choices that make life’s journeys unforgettable.
                                             </p>
-            <img src="https://via.placeholder.com/800x400" alt="High Camp Scenery"> 
+            <img src="./swiss.jpg" alt="High Camp Scenery"> 
             <h2>Farewell to High Camp: Packing Memories</h2>
             <p>
                 By the time we stumbled back into our lodge, it was already around 10:30 a.m., and we were completely surprised to find the place eerily empty. Not a single trekker was in sight. With curiosity (and a bit of concern), I asked the hotel staff, “Hasn’t anyone arrived yet?”
@@ -344,7 +397,7 @@
                 After savoring every bite (and sip), we headed back to our room to pack up. Once our bags were zipped and slung over our shoulders, we returned to the dining hall for one last time to bid farewell. We thanked mama and waved goodbye to the cozy lodge that had been our home at the high camp.
                 Oh, and yes, don’t worry—we did pay the bill. Because as much as we’d love to romanticize the trek as a life-altering spiritual journey, even spiritual journeys require you to settle your accounts.
                                             </p>
-            <img src="https://via.placeholder.com/800x400" alt="High Camp Scenery"> 
+            <img src="view2.jpg" alt="High Camp Scenery"> 
             <h2>The Unpredictable Pace of a Trek: From High Camp to Badal Dada
             </h2>
             <p>
@@ -375,7 +428,7 @@
                 Interestingly, while heading up earlier, we hadn’t noticed many trekkers in the upper section of Deurali. But on our way down, it was a different story. Several trekkers had set up camp there, perhaps lured by the quieter atmosphere. I mused that this “upper Deurali” must be a hidden gem—a perfect spot for trekkers seeking solitude.
                 The final stretch from Forest Camp to Deurali felt eternal, with each step testing our willpower. Yet, as the village lights came into view, a wave of relief washed over us. Exhausted yet proud, we stumbled into Deurali, our journey finally nearing its end. The thought of hopping on our motorbike and heading back to Pokhara was the only thing keeping us upright by that point. What a day it had been—an adventure we would carry in our hearts and legs for a long time.
                                             </p>
-            <img src="https://via.placeholder.com/800x400" alt="High Camp Scenery"> 
+            <img src="viewpoint.webp" alt="High Camp Scenery"> 
             <h2>Farewell to the Trek: A Lost Stick and the Journey Back
             </h2>
             <p>
@@ -384,7 +437,7 @@
                 The off-road stretch to Pokhara via Dhampus felt harsher than before. What had seemed thrilling on the way up now felt punishing on our tired bodies and minds. Still, the anticipation of reaching the familiar roads of Hemja kept us moving forward. After about 40–50 minutes, we finally arrived in Hemja, where we decided to stop for a much-needed break at Café Hyale, located in Damside.
                 Over steaming cups of milk tea, we relished the warmth that revived both our spirits and our energy. The tea wasn’t just a drink; it was a symbol of our return to civilization and the comforts of Pokhara. The café’s simple yet serene vibe felt like a soft landing after days of rugged trails.
                                             </p>
-            <img src="https://via.placeholder.com/800x400" alt="High Camp Scenery"> 
+            <img src="hyale.jpg" alt="High Camp Scenery"> 
             <h2>A Journey to Remember: Gratitude and Reflections
             </h2>
             <p>
@@ -398,8 +451,24 @@
          
         </div>
     </div>
+</div>
+
     <footer>
         <p>&copy; 2024 Mardi Himal Trek Blog | All Rights Reserved</p>
     </footer>
+    <script>
+        function openModal(image) {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    modal.style.display = "block";
+    modalImg.src = image.src;
+}
+
+function closeModal() {
+    const modal = document.getElementById("imageModal");
+    modal.style.display = "none";
+}
+
+    </script>
 </body>
 </html>
