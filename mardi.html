@@ -104,6 +104,89 @@ header h1 {
     font-weight: bold;
     cursor: pointer;
 }
+.feedback-section {
+    margin-left: 38%;
+            margin-top: 50px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 600px;
+        }
+
+        .feedback-section h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .feedback-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            resize: none;
+        }
+
+        .feedback-form button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .feedback-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .thank-you-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.918);
+            color: rgb(0, 0, 0);
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .thank-you-modal h1 {
+            margin-top: 20%;
+            font-size: 3em;
+        }
+
+        .thank-you-modal .celebration {
+            font-size: 2em;
+            margin-top: 20px;
+        }
+
+        .feedback-list {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .feedback-list h3 {
+            margin-bottom: 10px;
+        }
+
+        .feedback-item {
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .feedback-item:nth-child(odd) {
+            background: #f1f1f1;
+        }s
         /* Responsive Styles */
         @media (max-width: 768px) {
             header h1 {
@@ -452,10 +535,72 @@ header h1 {
         </div>
     </div>
 </div>
+<div class="Post" style="display: flex; justify-content: center; gap: 45rem; align-items: center;">
+    <div class="newest">
+        <a href="" style="
+            text-decoration: none;
+            font-size: 2rem;
+            color: black;
+        ">Older Post</a>
+    </div>
+    <div class="oldest">
+        <a href="" style="
+            text-decoration: none;
+            font-size: 2rem;
+            color: black;
+        ">Newer Post</a>
+    </div>
+</div>
 
+    
+<div class="feedback-section">
+    <h2>Share Your Feedback</h2>
+    <form class="feedback-form" onsubmit="handleSubmit(event)">
+        <textarea id="feedback" rows="5" placeholder="Write your feedback here..." required></textarea>
+        <button type="submit">Submit Feedback</button>
+    </form>
+    <div class="feedback-list">
+        <h3>User Feedback:</h3>
+        <div id="feedback-display"></div>
+    </div>
+</div>
+
+<!-- Thank You Celebration Modal -->
+<div class="thank-you-modal" id="thankYouModal">
+    <h1>🎉 Thank You for Your Feedback! 🎉</h1>
+    <div class="celebration">✨✨✨ Your words mean a lot! ✨✨✨</div>
+</div>
     <footer>
         <p>&copy; 2024 Mardi Himal Trek Blog | All Rights Reserved</p>
     </footer>
+    <script>
+        // Feedback Submission Handler
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent form from reloading the page
+            const feedback = document.getElementById('feedback').value.trim();
+
+            if (feedback) {
+                // Add feedback to the screen
+                const feedbackDisplay = document.getElementById('feedback-display');
+                const feedbackItem = document.createElement('div');
+                feedbackItem.className = 'feedback-item';
+                feedbackItem.innerText = feedback;
+                feedbackDisplay.appendChild(feedbackItem);
+
+                // Show the thank-you modal
+                const thankYouModal = document.getElementById('thankYouModal');
+                thankYouModal.style.display = 'block';
+
+                // Hide the modal after 3 seconds
+                setTimeout(() => {
+                    thankYouModal.style.display = 'none';
+                }, 3000);
+
+                // Clear the textarea
+                document.getElementById('feedback').value = '';
+            }
+        }
+    </script>
     <script>
         function openModal(image) {
     const modal = document.getElementById("imageModal");
