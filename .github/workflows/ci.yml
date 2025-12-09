@@ -1,0 +1,21 @@
+name: Simple CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  basic-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: List project files
+        run: ls -R
+
+      - name: Dummy check
+        run: echo "CI pipeline ran successfully for blog project 🚀"
